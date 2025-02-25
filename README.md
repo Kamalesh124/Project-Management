@@ -108,9 +108,6 @@ API documentation is available at `/api/docs` when running the backend server.
 ## 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👥 Authors
-- Your Name
-
 ## 🙏 Acknowledgments
 - Radix UI for the component library
 - TailwindCSS team
