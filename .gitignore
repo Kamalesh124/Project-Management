@@ -1,0 +1,32 @@
+# Dependencies
+**/node_modules/
+**/dist/
+
+# Environment files
+**/.env
+**/.env.local
+**/.env.*
+
+# Build directories
+**/build/
+**/target/
+
+# IDE files
+**/.vscode/
+**/.idea/
+**/*.iml
+**/*.iws
+**/*.ipr
+
+# Logs
+**/logs/
+**/*.log
+**/npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Application properties
+**/application.properties
+**/application.yml

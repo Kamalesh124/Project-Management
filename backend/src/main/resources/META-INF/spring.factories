@@ -1,0 +1,2 @@
+# org.springframework.boot.env.EnvironmentPostProcessor=# CORRECT FORMAT
+org.springframework.boot.env.EnvironmentPostProcessor=com.zosh.config.DotenvEnvironmentPostProcessor
