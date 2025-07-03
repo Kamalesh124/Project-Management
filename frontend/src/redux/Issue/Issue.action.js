@@ -43,7 +43,7 @@ export const fetchIssueById = (id) => {
   };
 };
 
-export const updateIssueStatus = ({id,status}) => {
+export const updateIssueStatus = ({id, status}) => {
   return async (dispatch) => {
     dispatch({ type: actionTypes.UPDATE_ISSUE_STATUS_REQUEST });
     try {
@@ -51,7 +51,7 @@ export const updateIssueStatus = ({id,status}) => {
       console.log("update issue status", response.data);
       dispatch({
         type: actionTypes.UPDATE_ISSUE_STATUS_SUCCESS,
-        issues: response.data,
+        issue: response.data,  // ✅ Fixed: Changed from 'issues' to 'issue'
       });
     } catch (error) {
       dispatch({
@@ -62,7 +62,7 @@ export const updateIssueStatus = ({id,status}) => {
   };
 };
 
-export const assignedUserToIssue= ({issueId,userId}) => {
+export const assignedUserToIssue = ({issueId, userId}) => {
   return async (dispatch) => {
     dispatch({ type: actionTypes.ASSIGNED_ISSUE_TO_USER_REQUEST});
     try {
@@ -73,7 +73,7 @@ export const assignedUserToIssue= ({issueId,userId}) => {
         issue: response.data,
       });
     } catch (error) {
-      console.log("error ",error)
+      console.log("error ", error)
       dispatch({
         type: actionTypes.ASSIGNED_ISSUE_TO_USER_FAILURE,
         error: error.message,

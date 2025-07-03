@@ -14,34 +14,43 @@ import Subscription from "./pages/subscription/Subscription";
 import UpgradeSuccess from "./pages/subscription/UpgradeSuccess";
 import { getUserSubscription } from "./redux/Subscription/Action";
 
+
+// ✅ Add this import
+import { Toaster } from "react-hot-toast";
+
 function App() {
   const dispatch = useDispatch();
   const { auth } = useSelector((store) => store);
+
+  
+
+
   useEffect(() => {
     dispatch(getUser(auth.jwt || localStorage.getItem("jwt")));
-    dispatch(getUserSubscription(auth.jwt || localStorage.getItem("jwt")))
+    dispatch(getUserSubscription(auth.jwt || localStorage.getItem("jwt")));
   }, [auth.jwt]);
 
   return (
     <>
-      
-      {auth.loading?<Loader/> : auth.user ? (
+      {/* ✅ Global Toast Provider */}
+      <Toaster position="top-right" reverseOrder={false} />
+
+      {auth.loading ? (
+        <Loader />
+      ) : auth.user ? (
         <>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/project/:id" element={<ProjectDetails />}></Route>
-            <Route path="/project/update/:id" element={<UpdateProjectForm />}></Route>
+            <Route path="/" element={<Home />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/project/update/:id" element={<UpdateProjectForm />} />
             <Route
               path="/project/:projectId/issue/:issueId"
               element={<IssueDetails />}
-            ></Route>
-             <Route
-              path="/accept_invitation"
-              element={<AcceptInvitation />}
-            ></Route>
-            <Route path="/upgrade_plan" element={<Subscription />}></Route>
-            <Route path="/upgrade_plan/success" element={<UpgradeSuccess />}></Route>
+            />
+            <Route path="/accept_invitation" element={<AcceptInvitation />} />
+            <Route path="/upgrade_plan" element={<Subscription />} />
+            <Route path="/upgrade_plan/success" element={<UpgradeSuccess />} />
           </Routes>
         </>
       ) : (
